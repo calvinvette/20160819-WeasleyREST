@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>jQuery REST Demo</title>
+<script src="http://code.jquery.com/jquery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+});
+
+function findUser() {
+	var userId = $("#userId").val();
+	$.getJSON("http://localhost:8080/rest-demo/rest/user/" + userId)
+	.success(function(data) {
+		$("#result").text(data.userName + " found!");
+	});
+	return false; // suppress normal form submission process
+}
+</script>
+</head>
+<body>
+<form onsubmit="return findUser();">
+	User ID: <input id="userId"/><br/>
+	<input type="submit" value="Find User!">
+</form>
+
+<div id="result">
+Nothing here.
+</div>
+
+
+
+</body>
+</html>
